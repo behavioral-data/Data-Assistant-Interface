@@ -1,0 +1,144 @@
+:root {
+  --jc-comment-border-color: #c5c5c5;
+  --jc-comment-border: 1px solid var(--jc-comment-border-color);
+
+  --jc-timestamp-color: var(--jp-ui-font-color2);
+}
+*[data-tooltip] {
+  position: relative;
+}
+
+*[data-tooltip]::after {
+  content: attr(data-tooltip);
+
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  width: 150px;
+
+  pointer-events: none;
+  opacity: 0;
+  -webkit-transition: opacity .15s ease-in-out;
+  -moz-transition: opacity .15s ease-in-out;
+  -ms-transition: opacity .15s ease-in-out;
+  -o-transition: opacity .15s ease-in-out;
+  transition: opacity .15s ease-in-out;
+
+  display: block;
+  font-size: 12px;
+  line-height: 16px;
+  /* background: #fefdcd; */
+  padding: 2px 2px;
+  /* border: 1px solid #c0c0c0; */
+  /* box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.4); */
+}
+
+*[data-tooltip]:hover::after {
+  opacity: 1;
+}
+
+.jc-svg-icon > svg {
+  width: 26px;
+  height: 26px;
+  vertical-align: middle;
+}
+
+.jc-button-hover:hover {
+  background-color: var(--jp-layout-color2);
+  border-radius: 3px;
+}
+
+.jc-panelHeader {
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  z-index: 2;
+}
+.jc-panelHeader-identity-container {
+  color: var(--jp-ui-font-color2);
+  font-size: var(--jp-ui-font-size0);
+  display: flex;
+  justify-content: start;
+  font-size: var(--jp-ui-font-size0);
+}
+.jc-panelHeader-editIcon {
+  transform: scale(0.72);
+  float: right;
+  display: block;
+  opacity: 0;
+}
+
+.jc-panelHeader-identity-container:hover .jc-panelHeader-editIcon {
+  opacity: 1;
+}
+
+.jc-panelHeader-filename {
+  font-size: var(--jp-ui-font-size1);
+  color: var(--jp-ui-font-color0);
+  margin-top: -3px;
+}
+
+.jc-panelHeader-left {
+  color: black;
+}
+.jc-panelHeader-right {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: auto;
+  align-items: start;
+  margin-top: 5px;
+  gap: 1em;
+}
+
+.jc-panelHeader-dropdown {
+  color: var(--jc-timestamp-color);
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  margin-right: -5px;
+}
+
+.jc-panelHeader-EditInputArea-false {
+  color: var(--jp-ui-font-color3);
+  word-break: break-word;
+}
+.jc-panelHeader-EditInputArea-true {
+  border: var(--jc-comment-border);
+  color: var(--jp-ui-font-color3);
+  word-break: break-word;
+}
+.jc-Button {
+  cursor: pointer;
+  padding: 2px;
+}
+.jc-Button > svg {
+  width: 20px;
+}
+
+.jc-DirtyIndicator {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--jp-ui-font-color2);
+  margin-left: 8px;
+}
+
+.jc-NotifIndicator {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--jp-brand-color2);
+}
+
+.jc-assistant-label{
+  /* font-size: 'var(--jp-ui-font-size1)'; */
+  /* font-family:'var(--jp-ui-font-family)'; */
+  display: inline-block;
+}

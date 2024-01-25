@@ -1,0 +1,24 @@
+{
+    "title": "Switch Mode menu",
+    "description": "Adding switch mode menu",
+    "jupyter.lab.menus": {
+      "main": [
+        {
+          "id": "jp-mainmenu-settings",
+          "rank": 80,
+          "items": [
+            {
+              "command": "jl-comments:switch-modes",
+              "rank":90
+            },
+            {
+              "command": "jl-comments:reload-and-refresh-comments",
+              "rank":90
+            }
+          ]
+        }
+      ]
+    },
+    "additionalProperties": false,
+    "type": "object"
+}

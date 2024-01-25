@@ -1,0 +1,19 @@
+name: jupyterlab-comments-demo
+
+channels:
+  - conda-forge/label/jupyterlab_rc
+  - conda-forge
+
+dependencies:
+  # runtime
+  - python >=3.8,<3.9.0a0
+  - jupyterlab >=3.1.0rc1,<4.0.0a0
+  - numpy
+  - scipy
+  - matplotlib
+  # labextension build
+  - nodejs >=15,<16
+  - pip
+  - wheel
+  # extensions
+  - jupyterlab-link-share

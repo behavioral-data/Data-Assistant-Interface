@@ -1,0 +1,104 @@
+[build-system]
+requires = [
+    "hatchling",
+    "jupyterlab~=3.0",
+]
+build-backend = "hatchling.build"
+
+[project]
+name = "jupyterlab-comments"
+description = "Comment on files JupyterLab"
+readme = "README.md"
+requires-python = ">=3.6"
+authors = [
+    { name = "Cameron Toy", email = "cameron.toy.00@gmail.com" },
+    { name = "Srirag Vuppala" },
+    { name = "and Rahul Nair" },
+]
+keywords = [
+    "Jupyter",
+    "JupyterLab",
+    "JupyterLab3",
+]
+classifiers = [
+    "Framework :: Jupyter",
+    "License :: OSI Approved :: BSD License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+]
+dependencies = [
+    "jupyter_server>=1.6,<2",
+]
+version = "0.1.2"
+
+[project.license]
+file = "LICENSE"
+
+[project.urls]
+Homepage = "https://github.com/jupytercalpoly/jupyterlab-comments"
+
+[tool.hatch.build.targets.wheel.shared-data]
+"jupyterlab_comments/labextension/static" = "share/jupyter/labextensions/jupyterlab-comments/static"
+"install.json" = "share/jupyter/labextensions/jupyterlab-comments/install.json"
+"jupyterlab_comments/labextension/build_log.json" = "share/jupyter/labextensions/jupyterlab-comments/build_log.json"
+"jupyterlab_comments/labextension/package.json" = "share/jupyter/labextensions/jupyterlab-comments/package.json"
+"jupyter-config/server-config" = "etc/jupyter/jupyter_server_config.d"
+"jupyter-config/nb-config" = "etc/jupyter/jupyter_notebook_config.d"
+
+[tool.hatch.build.targets.sdist]
+exclude = [
+    ".github",
+]
+
+[tool.hatch.build.hooks.jupyter-builder]
+dependencies = [
+    "hatch-jupyter-builder>=0.8.2",
+]
+build-function = "hatch_jupyter_builder.npm_builder"
+ensured-targets = [
+    "jupyterlab_comments/labextension/static/style.js",
+    "jupyterlab_comments/labextension/package.json",
+]
+skip-if-exists = [
+    "jupyterlab_comments/labextension/static/style.js",
+]
+
+[tool.hatch.build.hooks.jupyter-builder.editable-build-kwargs]
+build_dir = "jupyterlab_comments/labextension"
+source_dir = "src"
+build_cmd = "install:extension"
+npm = [
+    "jlpm",
+]
+
+[tool.hatch.build.hooks.jupyter-builder.build-kwargs]
+build_cmd = "build:prod"
+npm = [
+    "jlpm",
+]
+
+[tool.tbump]
+field = [
+    { name = "channel", default = "" },
+    { name = "release", default = "" },
+]
+
+[tool.tbump.version]
+current = "0.1.2"
+regex = "(?P<major>\\d+)\\.(?P<minor>\\d+)\\.(?P<patch>\\d+)((?P<channel>a|b|rc|.dev)(?P<release>\\d+))?"
+
+[tool.tbump.git]
+message_template = "Bump to {new_version}"
+tag_template = "v{new_version}"
+
+[[tool.tbump.file]]
+src = "pyproject.toml"
+version_template = "version = \"{major}.{minor}.{patch}{channel}{release}\""
+
+[[tool.tbump.file]]
+src = "package.json"
+version_template = "\"version\": \"{major}.{minor}.{patch}{channel}{release}\""
